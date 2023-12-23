@@ -1,0 +1,255 @@
+简易django开发文档
+
+本人环境如下：
+python 3.11.4
+django 4.2.1
+及VScode
+
+首先win+r   输入cmd打开终端
+使用 pip list 查看python第三方库，如果没有 django 
+使用：
+pip install django 安装   
+
+再次使用pip list 查看列表 出现django即安装成功
+打开vscode 找到扩展并安装Django,至此基本配置就算完成了
+
+
+
+
+现在开始我们愉快的项目吧
+桌面上新建一个文件夹 名字随意
+在该文件夹使用 cmd
+输入建站命令
+django-admin startproject mysite
+其中mysite是名字，可以随便取   
+此时该文件夹上就会出现一个mysite 的文件夹   文件夹结构如下
+mysite
+__pycache__(文件夹)
+__init__.py
+asgi.py
+settings.py
+urls.py
+wsgi.py
+
+
+
+                                      
+
+
+同样的方法
+建立app
+ 与mysite同级
+python manage.py startapp app
+
+app 文件夹结构如下：
+__pycache__（文件夹）
+migrations（文件夹）
+__init__.py
+admin.py
+apps.py
+models.py
+tests.py
+views.py
+
+然后到app文件夹里面建立templates,用来存放写好的html,
+
+
+建立static
+里面用来存放css images js等文件夹
+
+建立好基础文件夹后,用vscode打开
+回到mysite里面，在settings.py中  找到INSTALLED_APPS，将建立的app加入在里面，不出意外的话
+目标在34行
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'app'
+]
+
+回到app文件夹
+新建一个urls.py文件，并输入以下代码
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('',views.indax,name='indax'),
+]
+
+别忘了保存
+
+接下来配置主路由，回到mysite中找到urls.py，虽然名字一样，但和app中的urls.py作用可不同
+输入以下代码
+
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('app.urls')),
+]
+回到app,找到templates
+在其中建立index.html(注意HTML的写法，有些语法不互通)
+
+
+
+
+
+回到app,找到views.py
+
+from django.shortcuts import render
+from django.shortcuts import HttpResponse,redirect
+def indax(request):
+    return render(request,'index.html')
+
+
+
+
+
+当完成以上内容后，回到mysite
+cmd 
+再次输入
+python manage.py runserver 
+
+就可以看到我的小狐狸心理咨询网了,同时支持在线聊天哦。
+
+
+
+用户的登录和注册：
+//这个功能怎么做呢，正在学习中//
+首先在templates建立 login.html和regist.html
+
+login.html代码如下：
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <title>登陆</title>
+</head>
+
+<body style="background-image: url(img/backimg.gif);">
+  <div style="width: 70%; margin: 0 auto; padding-top: 20em;padding-bottom: 20em;">
+    <div class="ui stackable centered column grid">
+      <div class="centered row">
+        <div class="six wide column">
+          <div style="padding-bottom: 5em; background-color: rgba(245, 245, 245,0.5);" class="ui segment">
+            <form action="" method="POST" class="ui form">
+              <div class="field">
+                <label for="username">用户名：</label>
+                <input type="text" name="username" id="">
+              </div>
+              <div class="field">
+                <label for="password">密码：</label>
+                <input type="password" name="password" id="">
+              </div>
+              <input style="float: right;" class="ui inverted green button" type="submit" value="登陆">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+
+regist.html代码如下：
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <title>注册</title>
+</head>
+
+<body style="background-image: url(img/backimg.gif);">
+    <div style="width: 70%; margin: 0 auto; padding-top: 20em;padding-bottom: 20em;">   
+          <div class="ui stackable centered column grid">
+            <div class="centered row">
+              <div class="six wide column">
+                <div style="padding-bottom: 5em; background-color: rgba(245, 245, 245,0.5);" class="ui segment">
+                  <form action="" method="POST" class="ui form">
+                    <div class="field">
+                      <h3 style='color:red;'>{{msg}}</h3>
+                      <label for="username">用户名：</label>
+                      <input type="text" name="username" id="">
+                    </div>
+                    <div class="field">
+                      <label for="password">密码：</label>
+                      <input type="password" name="password" id="">
+                    </div>
+                    <div class="field">
+                      <label for="password2">重复密码：</label>
+                      <input type="password" name="password2" id="">
+                    </div>
+                    <div class="field">
+                      <label for="email">Email：</label>
+                      <input type="text" name="email" id="">
+                    </div>
+                    <input style="float: right;" class="ui inverted green button" type="submit" value="注册">
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+       
+    </div>
+</body>
+
+</html>
+
+之后回到app文件夹，找到urls.py,配置如下
+urls.py:
+
+
+from django.urls import path
+from . import views
+from app.views import indax
+
+urlpatterns = [
+    path('',views.indax,name='indax'),
+    path('logo/',views.login,name='login'),
+    path('regist/',views.regist,name='regist'),
+]
+
+回到templates中，找到我的index.html 
+第10行插入：<a class="item" href='/regist/'>注册</a>
+第11行插入：<a class="item" href='/logo/'>登录</a>
+
+回到mysite文件夹，使用cmd 输入 python manage.py runserver
+就在网页实现登录功能了。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

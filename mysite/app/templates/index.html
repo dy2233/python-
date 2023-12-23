@@ -1,0 +1,167 @@
+{% comment %} <!doctype html> {% endcomment %}
+ {% load static %}
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Designer" content="LiWei">
+  <meta name="Description" content="HomePage">
+
+	 <link rel="stylesheet" href="static/css/style.css" type="text/css">
+	 <link rel="stylesheet" href="static/css/ball.css" type="text/css">
+	 <link rel="stylesheet" href="static/css/test.css">
+	 <link rel="shortcut icon" href="favicon.ico">
+	 
+
+	 <title>究极无敌巨TM可爱的UI设计</title>
+	 {% comment %} <base href="/"> {% endcomment %}
+
+ </head> 
+ {% comment %} {% load static %}
+<link rel="stylesheet" href="{static}">
+<script src="{'static\js\index.js'}"></script> {% endcomment %}
+
+ <body id="bgid" onload="changeBg()">
+ <header>
+ <div class="tabbar">
+	 <ul>
+		 <li class="item active">
+			 <a href="#">
+                    <span class="icon">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                    </span>
+				 <span class="text">home</span>
+			 </a>
+		 </li>
+		 <li class="item">
+			 <a onclick="changeBg()" >
+                    <span class="icon">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                    </span>
+				 <span class="text">background</span>
+			 </a>
+		 </li>
+		 <li class="item">
+			 <a onclick="addFocus()">
+                    <span class="icon">
+                        <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                    </span>
+				 <span class="text">note</span>
+			 </a>
+		 </li>
+		 <li class="item">
+			 <a onclick="ballBtn()">
+
+                    <span class="icon">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                    </span>
+				 <span class="text">ball</span>
+			 </a>
+		 </li>
+		 <li class="item">
+			 <a href="#">
+                    <span class="icon">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                    </span>
+				 <span class="text">about</span>
+			 </a>
+		 </li>
+		 <div class="active-bg"></div>
+	 </ul>
+ </div>
+ <div class="img">
+	 <img src="static/images/头像.png" >
+	 <div class="clock">
+		 <p id="1">0</p>
+		 <p id="2">0</p>
+		 <p id="3">:</p>
+		 <p id="4">0</p>
+		 <p id="5">0</p>
+		 <p id="6">:</p>
+		 <p id="7">0</p>
+		 <p id="8">0</p>
+	 </div>
+ </div>
+
+		<div class="leftbox" id="ltbox">
+			<em><img src="static/images/clock.svg" alt=""></em>
+			<span id="lttime"></span>
+		</div>
+		<div class="midbox">
+			<form action="http://www.baidu.com/s"  method="get" target="_blank">
+				<input type="search" name="wd" id="seaid" placeholder="search something" autofocus="autofocus" autocomplete="off">
+				<input type="submit" id="subid" value="">
+			</form>
+		</div>
+		<div class="rightbox" id="rtbox"></div>
+	</header>
+	<div class="container">
+		<ul>
+			<li><a href="https://wx.qq.com/" target="_blank"><img src="static/images/微信.svg" alt=""></a></li>
+			<li><a href="https://s.weibo.com/top/summary?Refer=top_hot&topnav=1&wvr=6" target="_blank"><img src="static/images/微博.svg" alt=""></a></li>
+			<li><a href="#" target="_blank"><img src="static/images/collect.svg" alt=""></a></li>
+			<li><a href="https://email.163.com/" target="_blank"><img src="static/images/邮箱.svg" alt=""></a></li>
+			<li><a href="#" target="_blank"><img src="static/images/相册.svg" alt=""></a></li>
+			<li><a href="https://www.bilibili.com/" target="_blank"><img src="static/images/哔哩哔哩.svg" alt=""></a></li>
+			<li><a href="https://music.163.com/" target="_blank"><img src="static/images/网易云.svg" alt=""></a></li>
+			<li><a href="https://mp.weixin.qq.com" target="_blank"><img src="static/images/公众号.ico" alt=""></a></li>
+			<li><a href="https://tieba.baidu.com" target="_blank"><img src="static/images/贴吧.svg" alt=""></a></li>
+			<li><a href="http://www.baidu.com" target="_blank"><img src="static/images/百度.svg" alt=""></a></li>
+			<li><a href="http://www.google.com" target="_blank"><img src="static/images/chrome.svg" alt=""></a></li>
+			<li><a href="https://pan.baidu.com" target="_blank"><img src="static/images/百度网盘.svg" alt=""></a></li>
+			<li><a href="https://www.iconfont.cn/" target="_blank"><img style="width:55px;height:55px;" src="static/images/iconfont.svg" alt=""></a></li>
+			<li><a href="https://www.materialui.co/colors" target="_blank"><img src="static/images/颜色.svg" alt=""></a></li>
+			<li><a href="https://github.com/" target="_blank"><img src="static/images/github.svg" alt=""></a></li>
+			<li><a href="https://gitee.com/" target="_blank"><img src="static/images/码云.svg" alt=""></a></li>
+			<li><a href="https://cloud.tencent.com" target="_blank"><img src="static/images/腾讯云.svg" alt=""></a></li>
+			<li><a href="https://www.csdn.net/" target="_blank"><img src="static/images/csdn.svg" alt=""></a></li>
+			<li><a href="https://www.w3school.com.cn/index.html" target="_blank"><img src="static/images/w3c.svg" alt=""></a></li>
+			<li><a href="http://www.logofree.cn/" target="_blank"><img src="static/images/LOGO.svg" alt=""></a></li>
+			<li><a href="https://cli.im/" target="_blank"><img src="static/images/草料.svg" alt=""></a></li>
+			<li><a href="https://www.freecodecamp.org/" target="_blank"><img src="static/images/codecamp.svg" alt=""></a></li>
+			<li><a href="https://www.v2ex.com/" target="_blank"><img src="static/images/v2ex.svg" alt=""></a></li>
+			<li><a href="https://www.icourse163.org/" target="_blank"><img src="static/images/慕课.svg" alt=""></a></li>
+			<li><a href="https://open.163.com/" target="_blank"><img src="static/images/公开课.svg" alt=""></a></li>
+			<li><a href="https://www.canva.cn/" target="_blank"><img src="static/images/canvas.svg" alt=""></a></li>
+			<li><a href="https://www.zhihu.com/hot" target="_blank"><img src="static/images/知乎.svg" alt=""></a></li>
+			<li><a href="https://icomoon.io/" target="_blank"><img src="static/images/iconmoon.ico" alt=""></a></li>
+			<li><a href="https://www.iqiyi.com/home2020" target="_blank"><img src="static/images/爱奇艺.svg" alt=""></a></li>
+			<li><a href="https://v.qq.com/" target="_blank"><img src="static/images/腾讯视频.svg" alt=""></a></li>
+			<li><a href="https://www.runoob.com/" target="_blank"><img src="static/images/菜鸟.svg" alt=""></a></li>
+			<li><a href="https://www.jd.com" target="_blank"><img src="static/images/京东.svg" alt=""></a></li>
+			<li><a href="https://www.tmall.com" target="_blank"><img src="static/images/天猫.svg" alt=""></a></li>
+		</ul>
+	</div>
+
+	<footer>
+	<button onclick="getFocus()" class="topbtn"><i class="fas fa-chevron-circle-up"></i></button>
+	<button  id="note"><i class="fas fa-book"></i></button>
+	<ul>
+		<li><a href="https://mp.weixin.qq.com" target="_blank"><img src="static/images/公众号.ico" alt=""></a></li>
+		<li><a href="https://www.bilibili.com/" target="_blank"><img src="static/images/哔哩哔哩.svg" alt=""></a></li>
+		<li><a href="https://github.com/" target="_blank"><img src="static/images/github.svg" alt=""></a></li>
+		<li><a href="https://pan.baidu.com" target="_blank"><img src="static/images/百度网盘.svg" alt=""></a></li>
+		<li><a href="https://www.iconfont.cn/" target="_blank"><img src="static/images/iconfont.svg" alt=""></a></li>
+		<li><a href="https://www.materialui.co/colors" target="_blank"><img src="static/images/颜色.svg" alt=""></a></li>
+		<li><a href="https://github.com/" target="_blank"><img src="static/images/github.svg" alt=""></a></li>
+		<li><a href="https://gitee.com/" target="_blank"><img src="static/images/码云.svg" alt=""></a></li>
+		<li><a href="https://cloud.tencent.com" target="_blank"><img src="static/images/腾讯云.svg" ></a></li>
+	</ul>
+	</footer>
+
+	<div id="" class="btm">
+		<textarea id="txt" type="text"  maxlength="10"></textarea>
+		<input type="button" id="add"  value="Add">	
+		<input type="button" id="closeBox" onclick="addFocus()" value="">	
+		<ul class= "notes"></ul>
+	</div>
+	
+	<div class="ballbox"></div>
+	<div class="ballBtns" id="btns">
+		<input type="button" onclick="autoBtn()" class="auto_btn " value="Start">
+		<input type="button" onclick="clearBalls()" class="clear_btn" value="Clear">
+	</div>
+ {% comment %} <script src="js/index.js"></script> {% endcomment %}
+ {% comment %} <script src="static\js\index.js"></script> {% endcomment %}
+ <script src="static\js\index.js"></script>
+ </body>
+</html>
